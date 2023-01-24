@@ -90,3 +90,21 @@
     </button>
   </div>
 </div>
+<div class="hola" *ngIf="products">
+  <div *ngFor="let products of products">
+      
+      <div class="card" style="width: 18rem;">
+          
+          <div class="card-body">
+            <h5 class="card-title">Nombre del producto: {{products.name}}</h5>
+            <p class="card-text">Cantidad en inventario: {{products.quantity}}</p>
+            
+            <!-- <button (click)="modificarProducto(this.producto.name , this.producto.inInventory)" class="btn btn-primary">Editar</button>
+            <button (click)="agregarProductoCarro(this.producto.name)" class="btn btn-primary">+</button>               -->
+            <button (click)="eliminarProducto(this.products.name)" class="btn btn-secondary {{products.name}}">Eliminar</button>
+          </div>
+        </div>
+     
+     
+
+  </div>

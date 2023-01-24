@@ -17,6 +17,7 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllProductos();
+    this.servicios.getAllHistorialRequest().subscribe(console.log)
   }
   //crud crear producto
   name!: string;
@@ -64,7 +65,7 @@ export class MainComponent implements OnInit {
   }
   crearVenta() {
     const bodyFormulario: Venta = {
-      date: this.date,
+      
       id: this.id,
       idType: this.idType,
       clientName: this.clientName,
@@ -72,7 +73,7 @@ export class MainComponent implements OnInit {
     };
     console.log(bodyFormulario);
 
-    // this.servicios.CrearProductoRequest(bodyFormulario).subscribe();
+    this.servicios.CrearVentaRequest(bodyFormulario).subscribe();
 
     // this.name = '';
     // this.inInventory = 0;

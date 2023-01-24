@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Producto } from './modelo/modelos';
+import { Producto, Venta } from './modelo/modelos';
 
 @Injectable({
   providedIn: 'root',
@@ -38,11 +38,26 @@ export class ServiciosService {
       }
     );
   }
+  getAllHistorialRequest(): Observable<Venta[]> {
+    
+    return this.http.get<Venta[]>(`http://localhost:8080/historial/all`);
+  }
 
   CrearProductoRequest(bodyFormulario : Producto):Observable<Object> {
     console.log(bodyFormulario)
     return this.http.post(
       'http://localhost:8080/productos/save',      bodyFormulario,
+      {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+        }),
+      }
+    );
+  }
+  CrearVentaRequest(bodyFormulario : Venta):Observable<Object> {
+    console.log(bodyFormulario)
+    return this.http.post(
+      'http://localhost:8080/compras/save',      bodyFormulario,
       {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',

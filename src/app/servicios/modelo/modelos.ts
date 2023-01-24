@@ -13,7 +13,7 @@ export interface Producto {
     }
 
     export interface Venta {
-        date: string;
+        
         id: number;
         idType: string;
         clientName: string;
