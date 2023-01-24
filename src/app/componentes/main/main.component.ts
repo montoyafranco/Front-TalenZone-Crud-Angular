@@ -17,7 +17,7 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllProductos();
-    this.servicios.getAllHistorialRequest().subscribe(console.log)
+    this.servicios.getAllHistorialRequest().subscribe(console.log);
   }
   //crud crear producto
   name!: string;
@@ -32,7 +32,7 @@ export class MainComponent implements OnInit {
   id!: number;
   idType!: string;
   clientName!: string;
-  products: ProductoVenta[] = [];
+  @Input() products: ProductoVenta[] = [];
   //ojo aca products asi se llama el objeto adentro de VENTA para el JSON
 
   eliminarProducto(data: any) {
@@ -59,13 +59,18 @@ export class MainComponent implements OnInit {
       console.log(this.productos);
     });
   }
+  quitarProductoCarrito(name: any) {
+    let indice = this.products.filter(elemento => elemento.name != name)
+    this.products = indice
+    console.log(this.products)
+    
+  }
 
   crear() {
     this.crearProducto();
   }
   crearVenta() {
     const bodyFormulario: Venta = {
-      
       id: this.id,
       idType: this.idType,
       clientName: this.clientName,
@@ -74,11 +79,9 @@ export class MainComponent implements OnInit {
     console.log(bodyFormulario);
 
     this.servicios.CrearVentaRequest(bodyFormulario).subscribe();
+    this.products = []
 
-    // this.name = '';
-    // this.inInventory = 0;
-    // this.min = 0;
-    // this.max = 0;
+    
   }
   agregarProductoCarro(name: any) {
     var cantidadASumarAlCarro = prompt(
@@ -92,41 +95,25 @@ export class MainComponent implements OnInit {
       quantity: datoFormateado,
     };
 
-    let bandera : boolean = false
+    let bandera: boolean = false;
 
     this.products.forEach((productito) => {
       if (productito.name === name) {
-        if (true){
+        if (true) {
           console.log('si existe');
-          bandera = true
-        productito.name = name
-        productito.quantity = datoFormateado
-
-        } 
-        
-
-        // let verproductito = productito
-        // console.log(verproductito)
-        // console.log(productito)
-        //  this.products.push(verproductito);
-
-        
-
-      } 
-      
+          bandera = true;
+          productito.name = name;
+          productito.quantity = datoFormateado;
+        }
+      }
     });
-    if(bandera == false){
+    if (bandera == false) {
       this.products.push(productoASumar);
-      bandera = false
-
-
+      bandera = false;
     }
 
-   
-
     console.log('soy bodyform linea100 ', productoASumar);
-    
-    
+
     console.log(this.products);
   }
   crearProducto() {
