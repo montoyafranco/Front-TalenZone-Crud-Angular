@@ -35,17 +35,19 @@
       </button>
     </div>
   </div>
-  <div class="hola" *ngIf="productos.length > 0">
+  <div class="hola" *ngIf="productos.length">
     <div *ngFor="let producto of productos">
         
         <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
+            
             <div class="card-body">
-              <h5 class="card-title">{{producto.name}}</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <button  class="btn btn-primary">Editar</button>
+              <h5 class="card-title">Nombre del producto: {{producto.name}}</h5>
+              <p class="card-text">Cantidad en inventario: {{producto.inInventory}}</p>
+              <p class="card-text">Cantidad maxima: {{producto.max}}</p>
+              <p class="card-text">Cantidad minima: {{producto.min}}</p>
+              <button (click)="modificarProducto(this.producto.name , this.producto.inInventory)" class="btn btn-primary">Editar</button>
               <button  class="btn btn-primary">+</button>              
-              <button  class="btn btn-secondary">Eliminar</button>
+              <button (click)="eliminarProducto(this.producto.name)" class="btn btn-secondary {{producto.name}}">Eliminar</button>
             </div>
           </div>
        

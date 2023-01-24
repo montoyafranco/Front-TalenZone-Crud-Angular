@@ -13,32 +13,56 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllProductos();
-    
   }
   //crud crear producto
   name!: string;
-  inInventory!: number ;  
-  min!: number ;
-  max!: number ;
+  inInventory!: number;
+  min!: number;
+  max!: number;
 
-  productos!: Producto[];
+  @Input() productos!: Producto[];
 
   crear() {
     this.crearProducto();
   }
-  pintarProductos(){
+  pintarProductos() {}
+  // obtenerID(data :any){
+  //   console.log(data)
+  // }
+  eliminarProducto(data: any) {
+    console.log(data);
+    this.servicios.borrarProductoRequest(data).subscribe(console.log);
+    setTimeout(() => {
+      this.getAllProductos();
+      
+    }, 1000);
     
   }
+  modificarProducto(name :any ,inventario : any){
+    var nuevoMax = prompt("Ingrese el maximo a modificar ")
+    console.log(nuevoMax)
+    var nuevoDato = parseInt(nuevoMax!)
+    console.log(nuevoDato)
+    this.servicios.modificarProductoRequest(name,nuevoDato).subscribe()
+    setTimeout(() => {
+      this.getAllProductos();
+      
+    }, 1000);
 
-  getAllProductos() {    
+  }
+
+  getAllProductos() {
     this.servicios.getAllProductosRequest().subscribe((productos) => {
-      this.productos = productos;      console.log(this.productos);   });  }
+      this.productos = productos;
+      console.log(this.productos);
+    });
+  }
 
   crearProducto() {
     const bodyFormulario: Producto = {
       name: this.name,
       inInventory: this.inInventory,
-      enabled : "true",
+      enabled: 'true',
       min: this.min,
       max: this.max,
     };

@@ -20,10 +20,26 @@ export class ServiciosService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
   getAllProductosRequest(): Observable<Producto[]> {
+    console.log("se hizo peticion")
     return this.http.get<Producto[]>(`http://localhost:8080/productos/all`);
   }
+ borrarProductoRequest(name : string): Observable<any> {
+    return this.http.delete<any>(`http://localhost:8080/producto/delete/${name}`);
+  }
+  
+  modificarProductoRequest(name :string,max: number) {
+    console.log(name,max)
+    return this.http.put(
+      `http://localhost:8080/productos/update/${name}`,     {max : max},
+      {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+        }),
+      }
+    );
+  }
 
-  CreaPostAction(bodyFormulario : Producto):Observable<any> {
+  CreaPostAction(bodyFormulario : Producto):Observable<Object> {
     console.log(bodyFormulario)
     return this.http.post(
       'http://localhost:8080/productos/save',      bodyFormulario,
