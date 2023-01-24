@@ -1,0 +1,16 @@
+.hola{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: row;
+}
+.contreg{
+    display: flex;
+    flex-direction: column;
+    align-content: stretch;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+}
