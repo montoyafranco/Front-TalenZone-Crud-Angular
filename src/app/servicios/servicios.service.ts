@@ -39,7 +39,7 @@ export class ServiciosService {
     );
   }
 
-  CreaPostAction(bodyFormulario : Producto):Observable<Object> {
+  CrearProductoRequest(bodyFormulario : Producto):Observable<Object> {
     console.log(bodyFormulario)
     return this.http.post(
       'http://localhost:8080/productos/save',      bodyFormulario,

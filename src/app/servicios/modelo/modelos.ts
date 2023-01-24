@@ -5,3 +5,18 @@ export interface Producto {
     min: number;
     max: number;
 }
+
+
+    export interface ProductoVenta {
+        name: string;
+        quantity: number;
+    }
+
+    export interface Venta {
+        date: string;
+        id: number;
+        idType: string;
+        clientName: string;
+        products: ProductoVenta[];
+    }
+

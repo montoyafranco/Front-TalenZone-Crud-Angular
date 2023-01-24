@@ -35,7 +35,7 @@
       </button>
     </div>
   </div>
-  <div class="hola" *ngIf="productos.length">
+  <div class="hola" *ngIf="productos">
     <div *ngFor="let producto of productos">
         
         <div class="card" style="width: 18rem;">
@@ -46,7 +46,7 @@
               <p class="card-text">Cantidad maxima: {{producto.max}}</p>
               <p class="card-text">Cantidad minima: {{producto.min}}</p>
               <button (click)="modificarProducto(this.producto.name , this.producto.inInventory)" class="btn btn-primary">Editar</button>
-              <button  class="btn btn-primary">+</button>              
+              <button (click)="agregarProductoCarro(this.producto.name)" class="btn btn-primary">+</button>              
               <button (click)="eliminarProducto(this.producto.name)" class="btn btn-secondary {{producto.name}}">Eliminar</button>
             </div>
           </div>
@@ -55,4 +55,38 @@
 
     </div>
 
+</div>
+<div  class="contreg">
+  <div class="mensaje">
+    <h1>Completa tu informacion</h1>
+    <h5>
+      Realizar venta
+    </h5>
+  </div>
+
+  <div>
+    <div class="form-outline mb-4">
+      <label class="form-label bold" for="form5Example1">fecha</label>
+      <input type="text" name="name" class="form-control Nombre" [(ngModel)]="date" required minlength="1"  />
+    </div>
+
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form5Example1">Numero de ID </label>
+      <input required maxlength="14" type="number" name="telefono" [(ngModel)]="id" class="form-control telefono"
+        placeholder="Ejemplo: 5731787" />
+    </div>
+
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form5Example2">Tipo de ID</label>
+      <input type="string" id="form5Example2" class="form-control email" [(ngModel)]="idType "  />
+    </div>
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form5Example2">Nombre del cliente</label>
+      <input type="text" id="form5Example2" class="form-control email" [(ngModel)]="clientName"  />
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-block mb-4" (click)="crearVenta()">
+      Crear
+    </button>
+  </div>
 </div>
