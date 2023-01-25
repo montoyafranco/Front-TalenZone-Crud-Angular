@@ -2,6 +2,13 @@
 
   <h1 class="titulo">Gestor de Inventarios y Compras </h1>
   
+  <div id="contenedor_general" class="">
+  <button (click)="mostrarCarritoOcultarCompras()" class="btn btn-primary botoncito ">🛒</button>
+ 
+
+
+
+  
   
   
   <div class="hola" *ngIf="productos">
@@ -26,19 +33,19 @@
     </div>
 
 </div>
-<div  class="contreg">
+</div>
+<div id="contenedor_carrito" class="ocultar contenedor_carro_clase  " >
+<button (click)="vistaProductos()" class="btn btn-primary botoncito2 ">📝 Inventario</button>
+<div  class="contreg  ">
   <div class="mensaje">
-    <h1>Completa tu informacion</h1>
+    <h5>Completa tu informacion</h5>
     <h5>
       Realizar venta
     </h5>
   </div>
 
-  <div>
-    <div class="form-outline mb-4">
-      <label class="form-label bold" for="form5Example1">fecha</label>
-      <input type="text" name="name" class="form-control Nombre" [(ngModel)]="date" required minlength="1"  />
-    </div>
+  <div class="formulario">
+    
 
     <div class="form-outline mb-4">
       <label class="form-label" for="form5Example1">Numero de ID </label>
@@ -60,7 +67,7 @@
     </button>
   </div>
 </div>
-<div class="hola" *ngIf="products">
+<div class="hola2" *ngIf="products">
   <div *ngFor="let products of products">
       
       <div class="card" style="width: 18rem;">
@@ -78,3 +85,4 @@
      
 
   </div>
+</div>

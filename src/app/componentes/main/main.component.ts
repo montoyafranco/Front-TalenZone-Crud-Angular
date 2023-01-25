@@ -35,14 +35,14 @@ export class MainComponent implements OnInit {
   @Input() products: ProductoVenta[] = [];
   //ojo aca products asi se llama el objeto adentro de VENTA para el JSON
 
-  eliminarProducto(data: any) {
+  eliminarProducto(data: string) {
     console.log(data);
     this.servicios.borrarProductoRequest(data).subscribe(console.log);
     setTimeout(() => {
       this.getAllProductos();
     }, 1000);
   }
-  modificarProducto(name: any, inventario: any) {
+  modificarProducto(name: string, inventario: number) {
     var nuevoMax = prompt('Ingrese el maximo a modificar ');
     console.log(nuevoMax);
     var nuevoDato = parseInt(nuevoMax!);
@@ -59,7 +59,7 @@ export class MainComponent implements OnInit {
       console.log(this.productos);
     });
   }
-  quitarProductoCarrito(name: any) {
+  quitarProductoCarrito(name: string) {
     let indice = this.products.filter(elemento => elemento.name != name)
     this.products = indice
     console.log(this.products)
@@ -81,7 +81,7 @@ export class MainComponent implements OnInit {
 
     
   }
-  agregarProductoCarro(name: any) {
+  agregarProductoCarro(name: string) {
     var cantidadASumarAlCarro = prompt(
       'Ingrese la cantidad que desea comprar de este producto'
     );
@@ -113,6 +113,20 @@ export class MainComponent implements OnInit {
     console.log('soy bodyform linea100 ', productoASumar);
 
     console.log(this.products);
+  }
+  mostrarCarritoOcultarCompras  () {
+    let seleccionar = document.getElementById('contenedor_general');
+    seleccionar?.classList.add('ocultar');
+    let seleccionarExitoso = document.getElementById(      'contenedor_carrito'    );
+    seleccionarExitoso?.classList.remove('ocultar');
+  }
+  vistaProductos() {
+    let seleccionar = document.getElementById('contenedor_general');
+    seleccionar?.classList.remove('ocultar');
+    let seleccionarExitoso = document.getElementById(
+      'contenedor_carrito'
+    );
+    seleccionarExitoso?.classList.add('ocultar');
   }
  
 }
