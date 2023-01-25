@@ -14,3 +14,13 @@
     align-items: center;
     flex-wrap: nowrap;
 }
+.titulo{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-end;
+    align-items: flex-start;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
