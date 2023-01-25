@@ -1,4 +1,5 @@
 # FrontendCrud
+Simplemente darle NPMI i para la instalacion de dependencias . Navegacion de rutas donde se vera cada funcionalidad pedida  . Es necesario correrlo con el backend de TalentZone dentro de mis propios repositorios 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.1.
 
