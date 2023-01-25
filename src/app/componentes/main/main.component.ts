@@ -17,7 +17,7 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllProductos();
-    this.servicios.getAllHistorialRequest().subscribe(console.log);
+    
   }
   //crud crear producto
   name!: string;
@@ -66,9 +66,7 @@ export class MainComponent implements OnInit {
     
   }
 
-  crear() {
-    this.crearProducto();
-  }
+  
   crearVenta() {
     const bodyFormulario: Venta = {
       id: this.id,
@@ -116,20 +114,5 @@ export class MainComponent implements OnInit {
 
     console.log(this.products);
   }
-  crearProducto() {
-    const bodyFormulario: Producto = {
-      name: this.name,
-      inInventory: this.inInventory,
-      enabled: 'true',
-      min: this.min,
-      max: this.max,
-    };
-
-    this.servicios.CrearProductoRequest(bodyFormulario).subscribe();
-
-    this.name = '';
-    this.inInventory = 0;
-    this.min = 0;
-    this.max = 0;
-  }
+ 
 }

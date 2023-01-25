@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Producto, Venta } from './modelo/modelos';
+import { Historial, Producto, Venta } from './modelo/modelos';
 
 @Injectable({
   providedIn: 'root',
@@ -38,9 +38,9 @@ export class ServiciosService {
       }
     );
   }
-  getAllHistorialRequest(): Observable<Venta[]> {
+  getAllHistorialRequest(): Observable<Historial[]> {
     
-    return this.http.get<Venta[]>(`http://localhost:8080/historial/all`);
+    return this.http.get<Historial[]>(`http://localhost:8080/historial/all`);
   }
 
   CrearProductoRequest(bodyFormulario : Producto):Observable<Object> {

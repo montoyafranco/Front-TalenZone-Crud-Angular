@@ -1,0 +1,36 @@
+<div  class="contreg">
+    <div class="mensaje">
+      <h1>Completa tu informacion</h1>
+      <h5>
+        Cada vez mas cerca de acceder a los beneficios de MY WALLET para finalizar
+        el registro y crear tu cuenta, por favor diligencia la siguiente
+        Informacion
+      </h5>
+    </div>
+  
+    <div>
+      <div class="form-outline mb-4">
+        <label class="form-label bold" for="form5Example1">Nombre Completo</label>
+        <input type="text" name="name" class="form-control Nombre" [(ngModel)]="name" required minlength="1"  />
+      </div>
+  
+      <div class="form-outline mb-4">
+        <label class="form-label" for="form5Example1">Inventario </label>
+        <input required maxlength="14" type="number" name="telefono" [(ngModel)]="inInventory" class="form-control telefono"
+          placeholder="Ejemplo: 5731787" />
+      </div>
+  
+      <div class="form-outline mb-4">
+        <label class="form-label" for="form5Example2">min</label>
+        <input type="number" id="form5Example2" class="form-control email" [(ngModel)]="min "  />
+      </div>
+      <div class="form-outline mb-4">
+        <label class="form-label" for="form5Example2">max</label>
+        <input type="number" id="form5Example2" class="form-control email" [(ngModel)]="max"  />
+      </div>
+  
+      <button type="submit" class="btn btn-primary btn-block mb-4" (click)="crear()">
+        Crear
+      </button>
+    </div>
+  </div>

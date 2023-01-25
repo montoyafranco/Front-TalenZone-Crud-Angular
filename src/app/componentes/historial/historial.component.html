@@ -1,0 +1,31 @@
+
+<div class="hola" *ngIf="ventas">
+    <div *ngFor="let producto of ventas">
+        
+        <div class="card" style="width: 18rem;">
+            
+            <div class="card-body">
+             
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Estampa de Tiempo: {{producto.date}}</li>
+                <li class="list-group-item">ID: {{producto.id}}</li>
+                <li class="list-group-item">Tipo de ID: {{producto.idType}}</li>
+                <li class="list-group-item">Nombre del Cliente: {{producto.clientName}}</li>
+                <div *ngFor="let productito of producto.products">
+                <li class="list-group-item">Producto Nombre: {{productito.name   }}</li>
+                <li class="list-group-item">Cantidad: {{productito.quantity   }}</li>
+                </div>
+              </ul>
+              
+              
+
+              
+              
+            </div>
+          </div>
+       
+       
+
+    </div>
+
+</div>

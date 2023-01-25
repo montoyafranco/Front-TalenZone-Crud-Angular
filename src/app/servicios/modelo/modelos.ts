@@ -19,4 +19,12 @@ export interface Producto {
         clientName: string;
         products: ProductoVenta[];
     }
+    export interface Historial {
+        date: string;
+        id: number;
+        idType: string;
+        clientName: string;
+        products: ProductoVenta[];
+    }
+
 
