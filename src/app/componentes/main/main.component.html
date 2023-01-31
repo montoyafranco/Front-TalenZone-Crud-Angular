@@ -1,6 +1,13 @@
 
 
   <h1 class="titulo">Gestor de Inventarios y Compras </h1>
+  <button (click)="increment()">Increment</button>
+
+<div>Current Count: {{ count$ | async }}</div>
+
+<button (click)="decrement()">Decrement</button>
+
+<button (click)="reset()">Reset Counter</button>
   
   <div id="contenedor_general" class="">
   <button (click)="mostrarCarritoOcultarCompras()" class="btn btn-primary botoncito ">🛒</button>

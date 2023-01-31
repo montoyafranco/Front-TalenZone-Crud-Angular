@@ -11,6 +11,9 @@ import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './componentes/navbar/navbar.component';
 import { ProductoComponent } from './componentes/producto/producto.component';
 import { HistorialComponent } from './componentes/historial/historial.component'
+import { StoreModule } from '@ngrx/store';
+import { counterReducer } from './redux/reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,8 @@ import { HistorialComponent } from './componentes/historial/historial.component'
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    StoreModule.forRoot({ count: counterReducer }),
+    StoreDevtoolsModule.instrument({name:"TEST"}),
     [FormsModule]
   ],
   providers: [],

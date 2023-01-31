@@ -6,6 +6,9 @@ import {
   ProductoVenta,
   Venta,
 } from 'src/app/servicios/modelo/modelos';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { decrement, increment, reset } from 'src/app/redux/actions';
 
 @Component({
   selector: 'app-main',
@@ -13,12 +16,21 @@ import {
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit {
-  constructor(private servicios: ServiciosService) {}
+  constructor(
+    private servicios: ServiciosService,
+    private store: Store<{ count: number }>
+  ) {
+    this.count$ = store.select('count');
+  }
 
   ngOnInit(): void {
     this.getAllProductos();
-    
   }
+
+  count$:
+    | Observable<number>
+    //crud crear producto
+    | undefined;
   //crud crear producto
   name!: string;
   inInventory!: number;
@@ -34,6 +46,18 @@ export class MainComponent implements OnInit {
   clientName!: string;
   @Input() products: ProductoVenta[] = [];
   //ojo aca products asi se llama el objeto adentro de VENTA para el JSON
+
+  increment() {
+    this.store.dispatch(increment());
+  }
+
+  decrement() {
+    this.store.dispatch(decrement());
+  }
+
+  reset() {
+    this.store.dispatch(reset());
+  }
 
   eliminarProducto(data: string) {
     console.log(data);
@@ -60,13 +84,11 @@ export class MainComponent implements OnInit {
     });
   }
   quitarProductoCarrito(name: string) {
-    let indice = this.products.filter(elemento => elemento.name != name)
-    this.products = indice
-    console.log(this.products)
-    
+    let indice = this.products.filter((elemento) => elemento.name != name);
+    this.products = indice;
+    console.log(this.products);
   }
 
-  
   crearVenta() {
     const bodyFormulario: Venta = {
       id: this.id,
@@ -77,9 +99,7 @@ export class MainComponent implements OnInit {
     console.log(bodyFormulario);
 
     this.servicios.CrearVentaRequest(bodyFormulario).subscribe();
-    this.products = []
-
-    
+    this.products = [];
   }
   agregarProductoCarro(name: string) {
     var cantidadASumarAlCarro = prompt(
@@ -114,19 +134,16 @@ export class MainComponent implements OnInit {
 
     console.log(this.products);
   }
-  mostrarCarritoOcultarCompras  () {
+  mostrarCarritoOcultarCompras() {
     let seleccionar = document.getElementById('contenedor_general');
     seleccionar?.classList.add('ocultar');
-    let seleccionarExitoso = document.getElementById(      'contenedor_carrito'    );
+    let seleccionarExitoso = document.getElementById('contenedor_carrito');
     seleccionarExitoso?.classList.remove('ocultar');
   }
   vistaProductos() {
     let seleccionar = document.getElementById('contenedor_general');
     seleccionar?.classList.remove('ocultar');
-    let seleccionarExitoso = document.getElementById(
-      'contenedor_carrito'
-    );
+    let seleccionarExitoso = document.getElementById('contenedor_carrito');
     seleccionarExitoso?.classList.add('ocultar');
   }
- 
 }
